@@ -8,9 +8,9 @@ namespace Day1MVC.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index() //These are your urls and page names
         {
-            return View();
+            return View(); 
         }
 
         public ActionResult About()
@@ -22,8 +22,9 @@ namespace Day1MVC.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
+            ViewBag.Message = "The Iron Yard - from code";
+            var rng = new Random();
+            ViewBag.RandomNum = rng.Next(1, 11);
             return View();
         }
     }
