@@ -13,19 +13,10 @@ namespace Day1MVC.Controllers
             return View(); 
         }
 
-        public ActionResult About()
+        public ActionResult FunnyJoke() 
         {
-            ViewBag.Message = "Your application description page.";
-
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "The Iron Yard - from code";
-            var rng = new Random();
-            ViewBag.RandomNum = rng.Next(1, 11);
-            return View();
-        }
     }
 }
