@@ -30,6 +30,9 @@
     <div class="col-md-4">
         <h3>Created</h3>
     </div>
+    <div class="col-md-4">
+        <h3>Tags</h3>
+    </div>
 </div>
 <hr/>
 @foreach (var blogPost in ViewBag.AllBlogPosts)
@@ -43,6 +46,14 @@
         </div>
         <div class="col-md-4">
             <h3>@blogPost.Created</h3>
+        </div>
+        <div class="col-md-4">
+            <ul>
+                @foreach (var tag in blogPost.Tags)
+                {
+                    <li>@tag.Name</li>
+                }
+            </ul>
         </div>
     </div>
 }
