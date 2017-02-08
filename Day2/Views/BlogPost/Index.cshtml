@@ -1,0 +1,48 @@
+﻿<!--https://www.youtube.com/watch?v=i-fJft0LVnQ-->
+
+
+<h2>Welcome to your blog!</h2>
+
+<!--Form using Razor syntax-->
+@using (Html.BeginForm("Create", "BlogPost"))
+{
+    @*<input type="text" name="title" class="form-control" />
+        <br/>*@
+    //(id & name, value, anonymous object (because "class" is
+    //a protected word in C#
+    <p>
+        @Html.TextBox("Title", null, new { @class = "form-control", placeholder = "Title" })
+    </p>
+    <p>
+        @Html.TextBox("Body", null, new { @class = "form-control", placeholder = "Body" })
+    </p>
+    <p>
+        <input type="submit" class="btn btn-default" value="Create Blog Post" />
+    </p>
+}
+<div class="row">
+    <div class="col-md-3">
+        <h3>Title</h3>
+    </div>
+    <div class="col-md-5">
+        <h3>Body</h3>
+    </div>
+    <div class="col-md-4">
+        <h3>Created</h3>
+    </div>
+</div>
+<hr/>
+@foreach (var blogPost in ViewBag.AllBlogPosts)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <h3>@blogPost.Title</h3>
+        </div>
+        <div class="col-md-5">
+            <h3>@blogPost.Body</h3>
+        </div>
+        <div class="col-md-4">
+            <h3>@blogPost.Created</h3>
+        </div>
+    </div>
+}
