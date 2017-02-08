@@ -26,5 +26,12 @@ namespace Day3MVCTemplates.Controllers
 
             return View();
         }
+
+        public ActionResult Blog()
+        {
+            ViewBag.Message = "Your blog posts.";
+
+            return View();
+        }
     }
 }
