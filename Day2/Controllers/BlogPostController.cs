@@ -32,5 +32,12 @@ namespace Day2.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET: BlogPost Details
+        public ActionResult Details(int id)
+        {
+            BlogPost blog = db.BlogPosts.First(b => b.Id == id);
+            return View(blog);
+        }
+
     }
 }
