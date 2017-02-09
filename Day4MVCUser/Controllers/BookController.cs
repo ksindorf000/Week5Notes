@@ -73,7 +73,12 @@ namespace Day4MVCUser.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Book book = db.Books.Find(id);
+            //Only allow edits to books that belong to the current user
+            var userId = User.Identity.GetUserId();
+            Book book = db.Books
+                .Where(b => b.OwnerId == userId)
+                .Where(b => b.Id == id)
+                .FirstOrDefault();
             if (book == null)
             {
                 return HttpNotFound();
@@ -91,6 +96,7 @@ namespace Day4MVCUser.Controllers
         {
             if (ModelState.IsValid)
             {
+                book.OwnerId = User.Identity.GetUserId();
                 db.Entry(book).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
